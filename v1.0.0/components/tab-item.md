@@ -22,75 +22,13 @@ Try all variants and states interactively.
 
 ## States
 
-<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:16px 0 8px;font-family:sans-serif;">
-  <div style="border:1px solid #e2e8f0;border-radius:10px;padding:12px;background:#f8fafc;">
-    <p style="margin:0 0 10px;font-size:12px;font-weight:700;color:#334155;">Default</p>
-    <div style="display:inline-flex;border-bottom:4px solid transparent;height:48px;align-items:center;padding:0 16px;gap:8px;border:1px solid #e2e8f0;border-radius:6px 6px 0 0;background:#fff;">
-      <div style="width:16px;height:16px;border-radius:4px;background:rgb(215,25,47);border:1px solid rgb(230,230,230);flex-shrink:0;"></div>
-      <span style="font-size:13px;font-weight:700;color:rgb(151,153,155);white-space:nowrap;">Tab label</span>
-      <span style="font-size:11px;color:rgb(151,153,155);">✕</span>
-    </div>
-  </div>
-  <div style="border:1px solid #e2e8f0;border-radius:10px;padding:12px;background:#f8fafc;">
-    <p style="margin:0 0 10px;font-size:12px;font-weight:700;color:#334155;">Hover</p>
-    <div style="display:inline-flex;border-bottom:4px solid transparent;height:48px;align-items:center;padding:0 16px;gap:8px;border:1px solid #e2e8f0;border-radius:6px 6px 0 0;background:rgba(0,0,0,0.04);">
-      <div style="width:16px;height:16px;border-radius:4px;background:rgb(215,25,47);border:1px solid rgb(230,230,230);flex-shrink:0;"></div>
-      <span style="font-size:13px;font-weight:700;color:rgb(151,153,155);white-space:nowrap;">Tab label</span>
-      <span style="font-size:11px;color:rgb(151,153,155);">✕</span>
-    </div>
-  </div>
-  <div style="border:1px solid #e2e8f0;border-radius:10px;padding:12px;background:#f8fafc;">
-    <p style="margin:0 0 10px;font-size:12px;font-weight:700;color:#334155;">Active</p>
-    <div style="display:inline-flex;border-bottom:4px solid rgb(0,0,0);height:48px;align-items:center;padding:0 16px;gap:8px;border:1px solid #e2e8f0;border-radius:6px 6px 0 0;background:#fff;">
-      <div style="width:16px;height:16px;border-radius:4px;background:rgb(215,25,47);border:1px solid rgb(230,230,230);flex-shrink:0;"></div>
-      <span style="font-size:13px;font-weight:700;color:rgb(0,0,0);white-space:nowrap;">Tab label</span>
-      <span style="font-size:11px;color:rgb(0,0,0);">✕</span>
-    </div>
-  </div>
-  <div style="border:1px solid #e2e8f0;border-radius:10px;padding:12px;background:#f8fafc;">
-    <p style="margin:0 0 10px;font-size:12px;font-weight:700;color:#334155;">Disabled</p>
-    <div style="display:inline-flex;border-bottom:4px solid transparent;height:48px;align-items:center;padding:0 16px;gap:8px;border:1px solid #e2e8f0;border-radius:6px 6px 0 0;background:#fff;opacity:0.4;pointer-events:none;">
-      <div style="width:16px;height:16px;border-radius:4px;background:rgb(215,25,47);border:1px solid rgb(230,230,230);flex-shrink:0;"></div>
-      <span style="font-size:13px;font-weight:700;color:rgb(151,153,155);white-space:nowrap;">Tab label</span>
-      <span style="font-size:11px;color:rgb(151,153,155);">✕</span>
-    </div>
-  </div>
-</div>
+<TabItemStateGrid />
 
 ---
 
 ## Anatomy
 
-<div style="background:#f6f8fa;border:1px solid #e2e8f0;border-radius:12px;padding:32px 24px;margin:24px 0;font-family:sans-serif;">
-  <div style="display:inline-flex;border-bottom:4px solid rgb(0,0,0);height:48px;align-items:center;padding:0 16px;gap:8px;background:#fff;border-radius:4px 4px 0 0;border:1px solid #e2e8f0;border-bottom:4px solid #000;">
-    <div style="width:16px;height:16px;border-radius:4px;background:rgb(215,25,47);border:1px solid rgb(230,230,230);flex-shrink:0;"></div>
-    <span style="font-size:12px;color:#000;border:1px solid currentColor;border-radius:50%;width:14px;height:14px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;font-weight:700;">i</span>
-    <span style="font-size:13px;font-weight:700;color:rgb(0,0,0);">Tab label</span>
-    <span style="font-size:11px;color:rgb(0,0,0);">✕</span>
-  </div>
-  <div style="margin-top:28px;display:grid;grid-template-columns:1fr 1fr;gap:14px;font-size:13px;color:#475569;">
-    <div style="display:flex;align-items:flex-start;gap:8px;">
-      <span style="background:#6366f1;color:#fff;border-radius:50%;width:20px;height:20px;display:inline-flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0;">1</span>
-      <div><strong>Swatch</strong><br>16×16px color dot, radius 4px. Identifies a job or document by color. Mutually exclusive with Icon.</div>
-    </div>
-    <div style="display:flex;align-items:flex-start;gap:8px;">
-      <span style="background:#6366f1;color:#fff;border-radius:50%;width:20px;height:20px;display:inline-flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0;">2</span>
-      <div><strong>Icon</strong><br>14×14px Outline icon only. Communicates content category (info, warning, etc.). Mutually exclusive with Swatch.</div>
-    </div>
-    <div style="display:flex;align-items:flex-start;gap:8px;">
-      <span style="background:#6366f1;color:#fff;border-radius:50%;width:20px;height:20px;display:inline-flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0;">3</span>
-      <div><strong>Label</strong><br>Roboto Bold, 13px / 21px. Truncated with ellipsis when total tab width exceeds 320px.</div>
-    </div>
-    <div style="display:flex;align-items:flex-start;gap:8px;">
-      <span style="background:#6366f1;color:#fff;border-radius:50%;width:20px;height:20px;display:inline-flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0;">4</span>
-      <div><strong>Close ×</strong><br>14×14px. Removes the tab. Hidden on pinned tabs or when only one tab is open.</div>
-    </div>
-    <div style="display:flex;align-items:flex-start;gap:8px;">
-      <span style="background:#6366f1;color:#fff;border-radius:50%;width:20px;height:20px;display:inline-flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0;">5</span>
-      <div><strong>Active indicator</strong><br>4px bottom border in <code>color/black/100</code>. Visible only on the currently active tab.</div>
-    </div>
-  </div>
-</div>
+<TabItemAnatomy />
 
 ---
 
@@ -118,9 +56,7 @@ Four official variants. Optional slots (Swatch, Icon, Close) collapse automatica
 Simple navigation tab. No color identity or category. Use for fixed views.
 
 <div style="font-family:sans-serif;margin:12px 0 20px;">
-  <div style="display:inline-flex;border-bottom:4px solid transparent;height:48px;align-items:center;padding:0 16px;gap:8px;border:1px solid #e2e8f0;border-radius:4px 4px 0 0;">
-    <span style="font-size:13px;font-weight:700;color:rgb(0,0,0);">Overview</span>
-  </div>
+  <TabItemPreview variant="label-only" label="Overview" state="active" />
 </div>
 
 ### 2 · Swatch + Label
@@ -128,10 +64,7 @@ Simple navigation tab. No color identity or category. Use for fixed views.
 Color dot paired with a label. Use when the tab represents a job or document with a unique color identity.
 
 <div style="font-family:sans-serif;margin:12px 0 20px;">
-  <div style="display:inline-flex;border-bottom:4px solid transparent;height:48px;align-items:center;padding:0 16px;gap:8px;border:1px solid #e2e8f0;border-radius:4px 4px 0 0;">
-    <div style="width:16px;height:16px;border-radius:4px;background:rgb(215,25,47);border:1px solid rgb(230,230,230);flex-shrink:0;"></div>
-    <span style="font-size:13px;font-weight:700;color:rgb(0,0,0);">Job A — Fabric inspection</span>
-  </div>
+  <TabItemPreview variant="swatch-label" label="Job A - Fabric inspection" state="active" />
 </div>
 
 ### 3 · Swatch + Label + Close _(most common)_
@@ -139,11 +72,7 @@ Color dot paired with a label. Use when the tab represents a job or document wit
 Closeable job or document tab. The most frequently used variant in the product.
 
 <div style="font-family:sans-serif;margin:12px 0 20px;">
-  <div style="display:inline-flex;border-bottom:4px solid rgb(0,0,0);height:48px;align-items:center;padding:0 16px;gap:8px;border:1px solid #e2e8f0;border-radius:4px 4px 0 0;">
-    <div style="width:16px;height:16px;border-radius:4px;background:rgb(215,25,47);border:1px solid rgb(230,230,230);flex-shrink:0;"></div>
-    <span style="font-size:13px;font-weight:700;color:rgb(0,0,0);">Job A — Fabric inspection</span>
-    <span style="font-size:11px;color:rgb(0,0,0);cursor:pointer;">✕</span>
-  </div>
+  <TabItemPreview variant="swatch-label-close" label="Job A - Fabric inspection" state="active" />
 </div>
 
 ### 4 · Icon + Label + Close
@@ -151,11 +80,7 @@ Closeable job or document tab. The most frequently used variant in the product.
 Categorized, closeable tab. Use when the content type has semantic meaning (info, warning, error) that an icon can communicate.
 
 <div style="font-family:sans-serif;margin:12px 0 20px;">
-  <div style="display:inline-flex;border-bottom:4px solid transparent;height:48px;align-items:center;padding:0 16px;gap:8px;border:1px solid #e2e8f0;border-radius:4px 4px 0 0;">
-    <span style="font-size:12px;color:rgb(0,0,0);border:1px solid currentColor;border-radius:50%;width:14px;height:14px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;font-weight:700;">i</span>
-    <span style="font-size:13px;font-weight:700;color:rgb(0,0,0);">Calibration report</span>
-    <span style="font-size:11px;color:rgb(0,0,0);cursor:pointer;">✕</span>
-  </div>
+  <TabItemPreview variant="icon-label-close" label="Calibration report" state="active" />
 </div>
 
 ---
@@ -166,49 +91,25 @@ Categorized, closeable tab. Use when the content type has semantic meaning (info
 
 Base state. Label uses `color/text/tertiary`. No background, no border indicator.
 
-<div style="font-family:sans-serif;margin:12px 0 20px;background:#f6f8fa;border:1px solid #e2e8f0;border-radius:8px;padding:20px;">
-  <div style="display:inline-flex;border-bottom:4px solid transparent;height:48px;align-items:center;padding:0 16px;gap:8px;">
-    <div style="width:16px;height:16px;border-radius:4px;background:rgb(215,25,47);border:1px solid rgb(230,230,230);flex-shrink:0;"></div>
-    <span style="font-size:13px;font-weight:700;color:rgb(151,153,155);white-space:nowrap;">Tab label</span>
-    <span style="font-size:11px;color:rgb(151,153,155);">✕</span>
-  </div>
-</div>
+<TabItemPreview framed state="default" />
 
 ### Hover
 
 Triggered on pointer over. Background becomes `rgba(0,0,0,0.04)`. Label color stays tertiary.
 
-<div style="font-family:sans-serif;margin:12px 0 20px;background:#f6f8fa;border:1px solid #e2e8f0;border-radius:8px;padding:20px;">
-  <div style="display:inline-flex;border-bottom:4px solid transparent;height:48px;align-items:center;padding:0 16px;gap:8px;background:rgba(0,0,0,0.04);">
-    <div style="width:16px;height:16px;border-radius:4px;background:rgb(215,25,47);border:1px solid rgb(230,230,230);flex-shrink:0;"></div>
-    <span style="font-size:13px;font-weight:700;color:rgb(151,153,155);white-space:nowrap;">Tab label</span>
-    <span style="font-size:11px;color:rgb(151,153,155);">✕</span>
-  </div>
-</div>
+<TabItemPreview framed state="hover" />
 
 ### Active
 
 Currently selected tab. Label switches to `color/text/primary`. A 4px bottom border in `color/black/100` marks the active position. **Only one tab can be Active at a time.**
 
-<div style="font-family:sans-serif;margin:12px 0 20px;background:#f6f8fa;border:1px solid #e2e8f0;border-radius:8px;padding:20px;">
-  <div style="display:inline-flex;border-bottom:4px solid rgb(0,0,0);height:48px;align-items:center;padding:0 16px;gap:8px;">
-    <div style="width:16px;height:16px;border-radius:4px;background:rgb(215,25,47);border:1px solid rgb(230,230,230);flex-shrink:0;"></div>
-    <span style="font-size:13px;font-weight:700;color:rgb(0,0,0);white-space:nowrap;">Tab label</span>
-    <span style="font-size:11px;color:rgb(0,0,0);">✕</span>
-  </div>
-</div>
+<TabItemPreview framed state="active" />
 
 ### Disabled
 
 Not interactive. The entire tab item is rendered at 40% opacity. Cannot be clicked or focused.
 
-<div style="font-family:sans-serif;margin:12px 0 20px;background:#f6f8fa;border:1px solid #e2e8f0;border-radius:8px;padding:20px;">
-  <div style="display:inline-flex;border-bottom:4px solid transparent;height:48px;align-items:center;padding:0 16px;gap:8px;opacity:0.4;pointer-events:none;">
-    <div style="width:16px;height:16px;border-radius:4px;background:rgb(215,25,47);border:1px solid rgb(230,230,230);flex-shrink:0;"></div>
-    <span style="font-size:13px;font-weight:700;color:rgb(151,153,155);white-space:nowrap;">Tab label</span>
-    <span style="font-size:11px;color:rgb(151,153,155);">✕</span>
-  </div>
-</div>
+<TabItemPreview framed state="disabled" />
 
 ### State summary
 
