@@ -1,4 +1,32 @@
 import { defineConfig } from "vitepress";
+import { versionNavItems, versionSidebarItems } from "./versions.mts";
+
+const rootSidebar = [
+  {
+    text: "Getting Started",
+    items: [
+      { text: "Introduction", link: "/" },
+      { text: "API Examples", link: "/api-examples" },
+      { text: "Markdown Examples", link: "/markdown-examples" },
+      { text: "Changelog", link: "/changelog" },
+    ],
+  },
+  {
+    text: "Components",
+    items: [
+      { text: "Icon", link: "/components/icon" },
+      { text: "Tab Item", link: "/components/tab-item" },
+    ],
+  },
+  ...(versionSidebarItems.length > 0
+    ? [
+        {
+          text: "Versions",
+          items: versionSidebarItems,
+        },
+      ]
+    : []),
+];
 
 export default defineConfig({
   title: "Design System",
@@ -13,37 +41,11 @@ export default defineConfig({
       { text: "Changelog", link: "/changelog" },
       {
         text: "Version",
-        items: [
-          { text: "Latest", link: "/components/tab-item" },
-          { text: "v1.0.0", link: "/v1.0.0/components/tab-item" },
-        ],
+        items: versionNavItems,
       },
     ],
     sidebar: {
-      "/": [
-        {
-          text: "Getting Started",
-          items: [
-            { text: "Introduction", link: "/" },
-            { text: "API Examples", link: "/api-examples" },
-            { text: "Markdown Examples", link: "/markdown-examples" },
-            { text: "Changelog", link: "/changelog" },
-          ],
-        },
-        {
-          text: "Components",
-          items: [
-            { text: "Icon", link: "/components/icon" },
-            { text: "Tab Item", link: "/components/tab-item" },
-          ],
-        },
-        {
-          text: "Versions",
-          items: [
-            { text: "v1.0.0 / Tab Item", link: "/v1.0.0/components/tab-item" },
-          ],
-        },
-      ],
+      "/": rootSidebar,
     },
   },
 });
