@@ -7,12 +7,14 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "docs:dev": "vitepress dev",
     "docs:build": "vitepress build",
-    "docs:preview": "vitepress preview"
+    "docs:preview": "vitepress preview",
+    "docs:build:watch": "chokidar \"**/*.md\" \".vitepress/config.*\" \".vitepress/theme/**/*.{ts,js,mts,vue,css}\" \"public/**\" -i \".vitepress/dist/**\" -i \".vitepress/cache/**\" -i \".vitepress/.temp/**\" -c \"npm run docs:build\""
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "chokidar-cli": "^3.0.0",
     "vitepress": "^1.6.4"
   }
 }

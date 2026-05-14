@@ -4,10 +4,20 @@ export default defineConfig({
   title: "Design System",
   description: "Documentation for the design system components",
   themeConfig: {
+    search: {
+      provider: "local",
+    },
     nav: [
       { text: "Home", link: "/" },
       { text: "Components", link: "/components/icon" },
       { text: "Changelog", link: "/changelog" },
+      {
+        text: "Version",
+        items: [
+          { text: "Latest", link: "/components/tab-item" },
+          { text: "v1.0.0", link: "/v1.0.0/components/tab-item" },
+        ],
+      },
     ],
     sidebar: {
       "/": [

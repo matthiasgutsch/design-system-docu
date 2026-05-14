@@ -6,13 +6,48 @@ title: Tab Item
 
 A single tab within a Tab Bar. Represents one view or document the user can switch to. Width is hug (content-driven) with a hard **320px maximum** — labels beyond that are truncated with an ellipsis (…). Height is always **48px**.
 
----
-
 ## Playground
 
-Try all variants and states interactively. The spec readout at the bottom updates live.
+Try all variants and states interactively.
 
 <TabItemPlayground />
+
+## States
+
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:16px 0 8px;font-family:sans-serif;">
+  <div style="border:1px solid #e2e8f0;border-radius:10px;padding:12px;background:#f8fafc;">
+    <p style="margin:0 0 10px;font-size:12px;font-weight:700;color:#334155;">Default</p>
+    <div style="display:inline-flex;border-bottom:4px solid transparent;height:48px;align-items:center;padding:0 16px;gap:8px;border:1px solid #e2e8f0;border-radius:6px 6px 0 0;background:#fff;">
+      <div style="width:16px;height:16px;border-radius:4px;background:rgb(215,25,47);border:1px solid rgb(230,230,230);flex-shrink:0;"></div>
+      <span style="font-size:13px;font-weight:700;color:rgb(151,153,155);white-space:nowrap;">Tab label</span>
+      <span style="font-size:11px;color:rgb(151,153,155);">✕</span>
+    </div>
+  </div>
+  <div style="border:1px solid #e2e8f0;border-radius:10px;padding:12px;background:#f8fafc;">
+    <p style="margin:0 0 10px;font-size:12px;font-weight:700;color:#334155;">Hover</p>
+    <div style="display:inline-flex;border-bottom:4px solid transparent;height:48px;align-items:center;padding:0 16px;gap:8px;border:1px solid #e2e8f0;border-radius:6px 6px 0 0;background:rgba(0,0,0,0.04);">
+      <div style="width:16px;height:16px;border-radius:4px;background:rgb(215,25,47);border:1px solid rgb(230,230,230);flex-shrink:0;"></div>
+      <span style="font-size:13px;font-weight:700;color:rgb(151,153,155);white-space:nowrap;">Tab label</span>
+      <span style="font-size:11px;color:rgb(151,153,155);">✕</span>
+    </div>
+  </div>
+  <div style="border:1px solid #e2e8f0;border-radius:10px;padding:12px;background:#f8fafc;">
+    <p style="margin:0 0 10px;font-size:12px;font-weight:700;color:#334155;">Active</p>
+    <div style="display:inline-flex;border-bottom:4px solid rgb(0,0,0);height:48px;align-items:center;padding:0 16px;gap:8px;border:1px solid #e2e8f0;border-radius:6px 6px 0 0;background:#fff;">
+      <div style="width:16px;height:16px;border-radius:4px;background:rgb(215,25,47);border:1px solid rgb(230,230,230);flex-shrink:0;"></div>
+      <span style="font-size:13px;font-weight:700;color:rgb(0,0,0);white-space:nowrap;">Tab label</span>
+      <span style="font-size:11px;color:rgb(0,0,0);">✕</span>
+    </div>
+  </div>
+  <div style="border:1px solid #e2e8f0;border-radius:10px;padding:12px;background:#f8fafc;">
+    <p style="margin:0 0 10px;font-size:12px;font-weight:700;color:#334155;">Disabled</p>
+    <div style="display:inline-flex;border-bottom:4px solid transparent;height:48px;align-items:center;padding:0 16px;gap:8px;border:1px solid #e2e8f0;border-radius:6px 6px 0 0;background:#fff;opacity:0.4;pointer-events:none;">
+      <div style="width:16px;height:16px;border-radius:4px;background:rgb(215,25,47);border:1px solid rgb(230,230,230);flex-shrink:0;"></div>
+      <span style="font-size:13px;font-weight:700;color:rgb(151,153,155);white-space:nowrap;">Tab label</span>
+      <span style="font-size:11px;color:rgb(151,153,155);">✕</span>
+    </div>
+  </div>
+</div>
 
 ---
 
@@ -53,14 +88,14 @@ Try all variants and states interactively. The spec readout at the bottom update
 
 ## Properties
 
-| Property | Values | Default | Description |
-|---|---|---|---|
-| `State` | Default · Hover · Active · Disabled | Default | Visual interaction state |
-| `Label` | string | "Tab label" | Editable text; truncated at 320px total width |
-| `Show Swatch` | true · false | true | Shows a 16×16px color dot |
-| `Swatch Color` | RGB | `rgb(215, 25, 47)` | Color of the swatch in `rgb(r, g, b)` format only |
-| `Show Icon` | true · false | true | Shows a 14×14px Outline icon |
-| `Show Close` | true · false | true | Shows the × close button |
+| Property       | Values                              | Default            | Description                                       |
+| -------------- | ----------------------------------- | ------------------ | ------------------------------------------------- |
+| `State`        | Default · Hover · Active · Disabled | Default            | Visual interaction state                          |
+| `Label`        | string                              | "Tab label"        | Editable text; truncated at 320px total width     |
+| `Show Swatch`  | true · false                        | true               | Shows a 16×16px color dot                         |
+| `Swatch Color` | RGB                                 | `rgb(215, 25, 47)` | Color of the swatch in `rgb(r, g, b)` format only |
+| `Show Icon`    | true · false                        | true               | Shows a 14×14px Outline icon                      |
+| `Show Close`   | true · false                        | true               | Shows the × close button                          |
 
 > ⚠ `Show Swatch` and `Show Icon` are mutually exclusive. Never enable both at the same time.
 
@@ -71,6 +106,7 @@ Try all variants and states interactively. The spec readout at the bottom update
 Four official variants. Optional slots (Swatch, Icon, Close) collapse automatically when hidden.
 
 ### 1 · Label only
+
 Simple navigation tab. No color identity or category. Use for fixed views.
 
 <div style="font-family:sans-serif;margin:12px 0 20px;">
@@ -80,6 +116,7 @@ Simple navigation tab. No color identity or category. Use for fixed views.
 </div>
 
 ### 2 · Swatch + Label
+
 Color dot paired with a label. Use when the tab represents a job or document with a unique color identity.
 
 <div style="font-family:sans-serif;margin:12px 0 20px;">
@@ -90,6 +127,7 @@ Color dot paired with a label. Use when the tab represents a job or document wit
 </div>
 
 ### 3 · Swatch + Label + Close _(most common)_
+
 Closeable job or document tab. The most frequently used variant in the product.
 
 <div style="font-family:sans-serif;margin:12px 0 20px;">
@@ -101,6 +139,7 @@ Closeable job or document tab. The most frequently used variant in the product.
 </div>
 
 ### 4 · Icon + Label + Close
+
 Categorized, closeable tab. Use when the content type has semantic meaning (info, warning, error) that an icon can communicate.
 
 <div style="font-family:sans-serif;margin:12px 0 20px;">
@@ -113,9 +152,10 @@ Categorized, closeable tab. Use when the content type has semantic meaning (info
 
 ---
 
-## States
+## States (Detailed)
 
 ### Default
+
 Base state. Label uses `color/text/tertiary`. No background, no border indicator.
 
 <div style="font-family:sans-serif;margin:12px 0 20px;background:#f6f8fa;border:1px solid #e2e8f0;border-radius:8px;padding:20px;">
@@ -127,6 +167,7 @@ Base state. Label uses `color/text/tertiary`. No background, no border indicator
 </div>
 
 ### Hover
+
 Triggered on pointer over. Background becomes `rgba(0,0,0,0.04)`. Label color stays tertiary.
 
 <div style="font-family:sans-serif;margin:12px 0 20px;background:#f6f8fa;border:1px solid #e2e8f0;border-radius:8px;padding:20px;">
@@ -138,6 +179,7 @@ Triggered on pointer over. Background becomes `rgba(0,0,0,0.04)`. Label color st
 </div>
 
 ### Active
+
 Currently selected tab. Label switches to `color/text/primary`. A 4px bottom border in `color/black/100` marks the active position. **Only one tab can be Active at a time.**
 
 <div style="font-family:sans-serif;margin:12px 0 20px;background:#f6f8fa;border:1px solid #e2e8f0;border-radius:8px;padding:20px;">
@@ -149,6 +191,7 @@ Currently selected tab. Label switches to `color/text/primary`. A 4px bottom bor
 </div>
 
 ### Disabled
+
 Not interactive. The entire tab item is rendered at 40% opacity. Cannot be clicked or focused.
 
 <div style="font-family:sans-serif;margin:12px 0 20px;background:#f6f8fa;border:1px solid #e2e8f0;border-radius:8px;padding:20px;">
@@ -161,58 +204,58 @@ Not interactive. The entire tab item is rendered at 40% opacity. Cannot be click
 
 ### State summary
 
-| State | Background | Label color | Border-bottom | Interaction |
-|---|---|---|---|---|
-| Default | Transparent | `color/text/tertiary` | None | Clickable |
-| Hover | `rgba(0,0,0,0.04)` | `color/text/tertiary` | None | Clickable |
-| Active | Transparent | `color/text/primary` | 4px `color/black/100` | Current view |
-| Disabled | Transparent, opacity 0.4 | `color/text/tertiary` | None | Not interactive |
+| State    | Background               | Label color           | Border-bottom         | Interaction     |
+| -------- | ------------------------ | --------------------- | --------------------- | --------------- |
+| Default  | Transparent              | `color/text/tertiary` | None                  | Clickable       |
+| Hover    | `rgba(0,0,0,0.04)`       | `color/text/tertiary` | None                  | Clickable       |
+| Active   | Transparent              | `color/text/primary`  | 4px `color/black/100` | Current view    |
+| Disabled | Transparent, opacity 0.4 | `color/text/tertiary` | None                  | Not interactive |
 
 ---
 
 ## Sizing & Spacing
 
-| Property | Value | Token |
-|---|---|---|
-| Height | 48px | `spacing/12` |
-| Max width | 320px | — |
-| Horizontal padding | 16px | `spacing/4` |
-| Gap between elements | 8px | `spacing/2` |
-| Gap in Disabled state | 8px | `radius/md` |
-| Swatch size | 16×16px | — |
-| Swatch border radius | 4px | — |
-| Icon size | 14×14px | — |
-| Close button size | 14×14px | — |
-| Active indicator height | 4px | — |
+| Property                | Value   | Token        |
+| ----------------------- | ------- | ------------ |
+| Height                  | 48px    | `spacing/12` |
+| Max width               | 320px   | —            |
+| Horizontal padding      | 16px    | `spacing/4`  |
+| Gap between elements    | 8px     | `spacing/2`  |
+| Gap in Disabled state   | 8px     | `radius/md`  |
+| Swatch size             | 16×16px | —            |
+| Swatch border radius    | 4px     | —            |
+| Icon size               | 14×14px | —            |
+| Close button size       | 14×14px | —            |
+| Active indicator height | 4px     | —            |
 
 ---
 
 ## Typography
 
-| Property | Value |
-|---|---|
-| Font | Roboto Bold |
-| Font size | 13px |
-| Line height | 21px |
-| Font variation | `wdth 100` |
-| Overflow | Ellipsis (…) |
+| Property       | Value        |
+| -------------- | ------------ |
+| Font           | Roboto Bold  |
+| Font size      | 13px         |
+| Line height    | 21px         |
+| Font variation | `wdth 100`   |
+| Overflow       | Ellipsis (…) |
 
 ---
 
 ## Design Tokens
 
-| Token | Value | Usage |
-|---|---|---|
-| `color/brand/200` | `rgb(215, 25, 47)` | Default swatch color |
-| `color/border/default` | `rgb(230, 230, 230)` | Swatch border |
-| `color/text/primary` | `rgb(0, 0, 0)` | Active label |
-| `color/text/tertiary` | `rgb(151, 153, 155)` | Default / Hover / Disabled label |
-| `color/black/100` | `rgb(0, 0, 0)` | Active border-bottom indicator |
-| `color/icon/primary` | `rgb(0, 0, 0)` | Icon color |
-| `spacing/2` | `8px` | Element gap |
-| `spacing/4` | `16px` | Horizontal padding |
-| `spacing/12` | `48px` | Tab height |
-| `radius/md` | `8px` | Gap value in Disabled state |
+| Token                  | Value                | Usage                            |
+| ---------------------- | -------------------- | -------------------------------- |
+| `color/brand/200`      | `rgb(215, 25, 47)`   | Default swatch color             |
+| `color/border/default` | `rgb(230, 230, 230)` | Swatch border                    |
+| `color/text/primary`   | `rgb(0, 0, 0)`       | Active label                     |
+| `color/text/tertiary`  | `rgb(151, 153, 155)` | Default / Hover / Disabled label |
+| `color/black/100`      | `rgb(0, 0, 0)`       | Active border-bottom indicator   |
+| `color/icon/primary`   | `rgb(0, 0, 0)`       | Icon color                       |
+| `spacing/2`            | `8px`                | Element gap                      |
+| `spacing/4`            | `16px`               | Horizontal padding               |
+| `spacing/12`           | `48px`               | Tab height                       |
+| `radius/md`            | `8px`                | Gap value in Disabled state      |
 
 > Swatch color must always be in **RGB format** — `rgb(r, g, b)` with values 0–255. Never use hex or HSL.
 
