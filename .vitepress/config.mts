@@ -3,11 +3,11 @@ import { versionNavItems, versionSidebarItems } from "./versions.mts";
 
 const rootSidebar = [
   {
-    text: "Getting Started",
+    text: "About DataColor",
     items: [
       { text: "Introduction", link: "/" },
-      { text: "API Examples", link: "/api-examples" },
-      { text: "Markdown Examples", link: "/markdown-examples" },
+      { text: "Foundation", link: "/api-examples" },
+      { text: "Token", link: "/markdown-examples" },
       { text: "Changelog", link: "/changelog" },
     ],
   },
@@ -29,7 +29,7 @@ const rootSidebar = [
 ];
 
 export default defineConfig({
-  title: "Design System",
+  title: "DC DesignSystem",
   description: "Documentation for the design system components",
   themeConfig: {
     search: {
