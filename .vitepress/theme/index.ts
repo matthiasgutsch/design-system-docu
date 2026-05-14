@@ -1,5 +1,6 @@
 import DefaultTheme from "vitepress/theme";
 import type { Theme } from "vitepress";
+import "./style.css";
 import DocsPlayground from "./components/DocsPlayground.vue";
 import TabItemAnatomy from "./components/TabItemAnatomy.vue";
 import TabItemPlayground from "./components/TabItemPlayground.vue";
