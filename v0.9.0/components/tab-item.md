@@ -1,12 +1,14 @@
 ---
-title: Tab Item (v1.0.0)
+title: Tab Item (v0.9.0)
 ---
 
 ::: warning You are viewing the archived v0.9.0 documentation.
 [View the latest version →](/components/tab-item)
 :::
 
-# Tab Item
+# Tab Item (v0.9.0)
+
+Version: v0.9.0 (archived)
 
 A single tab within a Tab Bar. Represents one view or document the user can switch to. Width is hug (content-driven) with a hard **320px maximum** — labels beyond that are truncated with an ellipsis (…). Height is always **48px**.
 

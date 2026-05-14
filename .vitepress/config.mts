@@ -36,8 +36,6 @@ export default defineConfig({
       provider: "local",
     },
     nav: [
-      { text: "Home", link: "/" },
-      { text: "Components", link: "/components/icon" },
       { text: "Changelog", link: "/changelog" },
       {
         text: "Version",
