@@ -7,7 +7,7 @@ const rootSidebar = [
     items: [
       { text: "Introduction", link: "/" },
       { text: "Foundation", link: "/api-examples" },
-      { text: "Token", link: "/markdown-examples" },
+      { text: "Token", link: "/design-tokens" },
       { text: "Changelog", link: "/changelog" },
     ],
   },

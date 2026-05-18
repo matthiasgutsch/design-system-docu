@@ -21,8 +21,8 @@ features:
   - icon: 🎨
     title: Design Tokens
     details: Primitive, semantic, and component tokens for color, typography, spacing, elevation, motion, and more
-    link: /markdown-examples
-  - icon: �
+    link: /design-tokens
+  - icon: 📐
     title: Foundation
     details: Color, typography, spacing, elevation, iconography, motion, and accessibility principles
     link: /api-examples
