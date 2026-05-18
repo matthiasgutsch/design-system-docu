@@ -20,11 +20,11 @@ features:
     link: /components/icon
   - icon: 🎨
     title: Design Tokens
-    details: Understand colors, typography, spacing, and other foundational tokens
+    details: Primitive, semantic, and component tokens for color, typography, spacing, elevation, motion, and more
     link: /markdown-examples
-  - icon: 📖
-    title: Documentation
-    details: Detailed guides on implementation, usage patterns, and best practices
+  - icon: �
+    title: Foundation
+    details: Color, typography, spacing, elevation, iconography, motion, and accessibility principles
     link: /api-examples
   - icon: 📝
     title: Changelog
