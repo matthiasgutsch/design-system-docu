@@ -6,7 +6,7 @@ title: Icon
 
 A container that renders any icon at a fixed, consistent size. The icon itself is swappable — the component enforces correct dimensions and alignment across all 10 size steps.
 
-<div style="background:#1a202c;border-radius:12px;padding:24px;margin:24px 0;display:flex;align-items:center;justify-content:center;">
+<div style="background:#FFFFFF;border-radius:12px;padding:24px;margin:24px 0;display:flex;align-items:center;justify-content:center;">
   <img src="/images/icon/overview.png" alt="All icon sizes" style="max-width:100%;height:auto;image-rendering:crisp-edges;" />
 </div>
 
@@ -28,52 +28,52 @@ Ten sizes are available. Each size is a strict token — do not use intermediate
     <tbody>
       <tr style="border-bottom:1px solid #f1f5f9;">
         <td style="padding:12px 16px;font-family:monospace;font-weight:600;">16px</td>
-        <td style="padding:12px 16px;background:#1a202c;width:60px;text-align:center;"><img src="/images/icon/size-16.png" style="width:16px;height:16px;display:block;margin:auto;" /></td>
+        <td style="padding:12px 16px;background:#FFFFFF;width:60px;text-align:center;"><img src="/images/icon/size-16.png" style="width:16px;height:16px;display:block;margin:auto;" /></td>
         <td style="padding:12px 16px;color:#64748b;">Inline with dense text, table cells, compact UI</td>
       </tr>
       <tr style="border-bottom:1px solid #f1f5f9;">
         <td style="padding:12px 16px;font-family:monospace;font-weight:600;">20px</td>
-        <td style="padding:12px 16px;background:#1a202c;width:60px;text-align:center;"><img src="/images/icon/size-20.png" style="width:20px;height:20px;display:block;margin:auto;" /></td>
+        <td style="padding:12px 16px;background:#FFFFFF;width:60px;text-align:center;"><img src="/images/icon/size-20.png" style="width:20px;height:20px;display:block;margin:auto;" /></td>
         <td style="padding:12px 16px;color:#64748b;">Default for most UI contexts — buttons, inputs, labels</td>
       </tr>
       <tr style="border-bottom:1px solid #f1f5f9;">
         <td style="padding:12px 16px;font-family:monospace;font-weight:600;">24px</td>
-        <td style="padding:12px 16px;background:#1a202c;width:60px;text-align:center;"><img src="/images/icon/size-24.png" style="width:24px;height:24px;display:block;margin:auto;" /></td>
+        <td style="padding:12px 16px;background:#FFFFFF;width:60px;text-align:center;"><img src="/images/icon/size-24.png" style="width:24px;height:24px;display:block;margin:auto;" /></td>
         <td style="padding:12px 16px;color:#64748b;">Navigation items, list rows, form fields</td>
       </tr>
       <tr style="border-bottom:1px solid #f1f5f9;">
         <td style="padding:12px 16px;font-family:monospace;font-weight:600;">28px</td>
-        <td style="padding:12px 16px;background:#1a202c;width:60px;text-align:center;"><img src="/images/icon/size-28.png" style="width:28px;height:28px;display:block;margin:auto;" /></td>
+        <td style="padding:12px 16px;background:#FFFFFF;width:60px;text-align:center;"><img src="/images/icon/size-28.png" style="width:28px;height:28px;display:block;margin:auto;" /></td>
         <td style="padding:12px 16px;color:#64748b;">Section headers, medium-emphasis actions</td>
       </tr>
       <tr style="border-bottom:1px solid #f1f5f9;">
         <td style="padding:12px 16px;font-family:monospace;font-weight:600;">32px</td>
-        <td style="padding:12px 16px;background:#1a202c;width:60px;text-align:center;"><img src="/images/icon/size-32.png" style="width:32px;height:32px;display:block;margin:auto;" /></td>
+        <td style="padding:12px 16px;background:#FFFFFF;width:60px;text-align:center;"><img src="/images/icon/size-32.png" style="width:32px;height:32px;display:block;margin:auto;" /></td>
         <td style="padding:12px 16px;color:#64748b;">Card headers, toolbar primary actions</td>
       </tr>
       <tr style="border-bottom:1px solid #f1f5f9;">
         <td style="padding:12px 16px;font-family:monospace;font-weight:600;">36px</td>
-        <td style="padding:12px 16px;background:#1a202c;width:60px;text-align:center;"><img src="/images/icon/size-36.png" style="width:36px;height:36px;display:block;margin:auto;" /></td>
+        <td style="padding:12px 16px;background:#FFFFFF;width:60px;text-align:center;"><img src="/images/icon/size-36.png" style="width:36px;height:36px;display:block;margin:auto;" /></td>
         <td style="padding:12px 16px;color:#64748b;">Feature callouts, onboarding steps</td>
       </tr>
       <tr style="border-bottom:1px solid #f1f5f9;">
         <td style="padding:12px 16px;font-family:monospace;font-weight:600;">40px</td>
-        <td style="padding:12px 16px;background:#1a202c;width:60px;text-align:center;"><img src="/images/icon/size-40.png" style="width:40px;height:40px;display:block;margin:auto;" /></td>
+        <td style="padding:12px 16px;background:#FFFFFF;width:60px;text-align:center;"><img src="/images/icon/size-40.png" style="width:40px;height:40px;display:block;margin:auto;" /></td>
         <td style="padding:12px 16px;color:#64748b;">Empty states, large action buttons</td>
       </tr>
       <tr style="border-bottom:1px solid #f1f5f9;">
         <td style="padding:12px 16px;font-family:monospace;font-weight:600;">44px</td>
-        <td style="padding:12px 16px;background:#1a202c;width:60px;text-align:center;"><img src="/images/icon/size-44.png" style="width:44px;height:44px;display:block;margin:auto;" /></td>
+        <td style="padding:12px 16px;background:#FFFFFF;width:60px;text-align:center;"><img src="/images/icon/size-44.png" style="width:44px;height:44px;display:block;margin:auto;" /></td>
         <td style="padding:12px 16px;color:#64748b;">Hero sections, prominent status indicators</td>
       </tr>
       <tr style="border-bottom:1px solid #f1f5f9;">
         <td style="padding:12px 16px;font-family:monospace;font-weight:600;">48px</td>
-        <td style="padding:12px 16px;background:#1a202c;width:60px;text-align:center;"><img src="/images/icon/size-48.png" style="width:48px;height:48px;display:block;margin:auto;" /></td>
+        <td style="padding:12px 16px;background:#FFFFFF;width:60px;text-align:center;"><img src="/images/icon/size-48.png" style="width:48px;height:48px;display:block;margin:auto;" /></td>
         <td style="padding:12px 16px;color:#64748b;">Full-page empty states, splash screens</td>
       </tr>
       <tr>
         <td style="padding:12px 16px;font-family:monospace;font-weight:600;">52px</td>
-        <td style="padding:12px 16px;background:#1a202c;width:60px;text-align:center;"><img src="/images/icon/size-52.png" style="width:52px;height:52px;display:block;margin:auto;" /></td>
+        <td style="padding:12px 16px;background:#FFFFFF;width:60px;text-align:center;"><img src="/images/icon/size-52.png" style="width:52px;height:52px;display:block;margin:auto;" /></td>
         <td style="padding:12px 16px;color:#64748b;">Maximum size — landing pages, large illustrations</td>
       </tr>
     </tbody>
@@ -84,10 +84,10 @@ Ten sizes are available. Each size is a strict token — do not use intermediate
 
 ## Properties
 
-| Property | Values | Default | Description |
-|---|---|---|---|
-| `size` | 16 · 20 · 24 · 28 · 32 · 36 · 40 · 44 · 48 · 52 | 16 | The icon bounding box in pixels |
-| `icon` | any icon node | specrometer | The icon rendered inside the container |
+| Property | Values                                          | Default     | Description                            |
+| -------- | ----------------------------------------------- | ----------- | -------------------------------------- |
+| `size`   | 16 · 20 · 24 · 28 · 32 · 36 · 40 · 44 · 48 · 52 | 16          | The icon bounding box in pixels        |
+| `icon`   | any icon node                                   | specrometer | The icon rendered inside the container |
 
 ---
 
