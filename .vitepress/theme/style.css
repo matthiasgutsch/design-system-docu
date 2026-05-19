@@ -52,7 +52,7 @@
   box-sizing: border-box;
   width: 100%;
   padding: 10px 24px;
-  background: linear-gradient(90deg, #fff3f3 0%, #ffffff 100%);
+  background: transparent;
   color: var(--vp-c-text-1);
   font-size: 13px;
   display: flex;
@@ -61,7 +61,7 @@
 }
 
 .version-banner[data-archived="true"] {
-  background: linear-gradient(90deg, #fff2dc 0%, #ffffff 100%);
+  background: transparent;
 }
 
 .version-banner__label {
