@@ -24,6 +24,10 @@ Primitive tokens define every raw value the system can produce. They are not mea
 
 ### Color Primitives
 
+Preview the most-used primary and semantic colors:
+
+<ColorTokenTabs />
+
 ```css
 /* Brand */
 --primitive-brand-100: #fce8eb;

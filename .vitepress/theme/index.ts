@@ -2,6 +2,7 @@ import DefaultTheme from "vitepress/theme";
 import type { Theme } from "vitepress";
 import { h } from "vue";
 import "./style.css";
+import ColorTokenTabs from "./components/ColorTokenTabs.vue";
 import DocsPlayground from "./components/DocsPlayground.vue";
 import TabItemAnatomy from "./components/TabItemAnatomy.vue";
 import TabItemPlayground from "./components/TabItemPlayground.vue";
@@ -18,6 +19,7 @@ const theme: Theme = {
       "nav-bar-content-after": () => h(VersionNavCurrentLabel),
     }),
   enhanceApp({ app }) {
+    app.component("ColorTokenTabs", ColorTokenTabs);
     app.component("DocsPlayground", DocsPlayground);
     app.component("TabItemAnatomy", TabItemAnatomy);
     app.component("TabItemPlayground", TabItemPlayground);
