@@ -1,16 +1,18 @@
 import { defineConfig } from "vitepress";
-import { versionNavItems, versionSidebarItems } from "./versions.mts";
+import { versionNavItems, versionSidebars } from "./versions.mts";
+
+const aboutSection = {
+  text: "About DataColor",
+  items: [
+    { text: "Introduction", link: "/" },
+    { text: "Foundation", link: "/api-examples" },
+    { text: "Token", link: "/design-tokens" },
+    { text: "Changelog", link: "/changelog" },
+  ],
+};
 
 const rootSidebar = [
-  {
-    text: "About DataColor",
-    items: [
-      { text: "Introduction", link: "/" },
-      { text: "Foundation", link: "/api-examples" },
-      { text: "Token", link: "/design-tokens" },
-      { text: "Changelog", link: "/changelog" },
-    ],
-  },
+  aboutSection,
   {
     text: "Components",
     items: [
@@ -18,15 +20,14 @@ const rootSidebar = [
       { text: "Tab Item", link: "/components/tab-item" },
     ],
   },
-  ...(versionSidebarItems.length > 0
-    ? [
-        {
-          text: "Versions",
-          items: versionSidebarItems,
-        },
-      ]
-    : []),
 ];
+
+const versionAwareSidebar = Object.fromEntries(
+  Object.entries(versionSidebars).map(([prefix, sections]) => [
+    prefix,
+    [aboutSection, ...sections],
+  ]),
+);
 
 export default defineConfig({
   title: "DC DesignSystem",
@@ -44,6 +45,7 @@ export default defineConfig({
     ],
     sidebar: {
       "/": rootSidebar,
+      ...versionAwareSidebar,
     },
   },
 });

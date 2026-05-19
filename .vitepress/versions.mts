@@ -12,6 +12,11 @@ type VersionEntry = {
   pages: LinkItem[];
 };
 
+type SidebarSection = {
+  text: string;
+  items: LinkItem[];
+};
+
 const docsRoot = fileURLToPath(new URL("..", import.meta.url));
 const versionFolderPattern = /^v\d[\w.-]*$/;
 
@@ -89,3 +94,23 @@ export const versionSidebarItems: LinkItem[] = versionEntries.flatMap((entry) =>
     link: page.link,
   })),
 );
+
+export const versionSidebars: Record<string, SidebarSection[]> =
+  Object.fromEntries(
+    versionEntries.map((entry) => {
+      const componentItems = entry.pages.filter((page) =>
+        page.link.startsWith(`/${entry.name}/components/`),
+      );
+
+      const sections: SidebarSection[] = [];
+
+      if (componentItems.length > 0) {
+        sections.push({
+          text: "Components",
+          items: componentItems,
+        });
+      }
+
+      return [`/${entry.name}/`, sections];
+    }),
+  );

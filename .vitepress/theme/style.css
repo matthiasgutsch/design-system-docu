@@ -47,3 +47,41 @@
   --vp-button-brand-hover-bg: #d7172f;
   --vp-button-brand-active-bg: #d7172f;
 }
+
+.version-banner {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 10px 24px;
+  border-bottom: 1px solid var(--vp-c-divider);
+  background: linear-gradient(90deg, #fff3f3 0%, #ffffff 100%);
+  color: var(--vp-c-text-1);
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.version-banner[data-archived="true"] {
+  background: linear-gradient(90deg, #fff2dc 0%, #ffffff 100%);
+}
+
+.version-banner__label {
+  color: var(--vp-c-text-2);
+}
+
+.version-banner__value {
+  color: #b30f24;
+  font-weight: 700;
+}
+
+.version-banner__hint {
+  color: #9a6700;
+}
+
+@media (max-width: 640px) {
+  .version-banner {
+    padding: 10px 16px;
+    font-size: 12px;
+    gap: 6px;
+  }
+}
