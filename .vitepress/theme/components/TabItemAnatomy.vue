@@ -102,8 +102,8 @@ const anatomyItems = [
 }
 
 .tab-anatomy__badge {
-  background: #6366f1;
-  color: #fff;
+  background: #000000;
+  color: #ffffff;
   border-radius: 999px;
   width: 20px;
   height: 20px;
