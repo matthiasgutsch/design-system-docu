@@ -10,10 +10,17 @@ const currentVersion = computed(() => {
 });
 
 const isArchived = computed(() => currentVersion.value !== "Latest");
+const shouldShowBanner = computed(
+  () => route.path !== "/" && route.path !== "/index.html",
+);
 </script>
 
 <template>
-  <div class="version-banner" :data-archived="isArchived">
+  <div
+    v-if="shouldShowBanner"
+    class="version-banner"
+    :data-archived="isArchived"
+  >
     <span class="version-banner__label">Viewing:</span>
     <strong class="version-banner__value">{{ currentVersion }}</strong>
     <span v-if="isArchived" class="version-banner__hint">(archived docs)</span>
