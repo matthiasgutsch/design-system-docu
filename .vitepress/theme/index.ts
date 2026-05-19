@@ -8,12 +8,14 @@ import TabItemPlayground from "./components/TabItemPlayground.vue";
 import TabItemPreview from "./components/TabItemPreview.vue";
 import TabItemStateGrid from "./components/TabItemStateGrid.vue";
 import VersionBanner from "./components/VersionBanner.vue";
+import VersionNavCurrentLabel from "./components/VersionNavCurrentLabel.vue";
 
 const theme: Theme = {
   extends: DefaultTheme,
   Layout: () =>
     h(DefaultTheme.Layout, null, {
       "layout-top": () => h(VersionBanner),
+      "nav-bar-content-after": () => h(VersionNavCurrentLabel),
     }),
   enhanceApp({ app }) {
     app.component("DocsPlayground", DocsPlayground);
