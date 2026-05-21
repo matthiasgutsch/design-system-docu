@@ -1,0 +1,606 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Icon — UI Kit</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* ============================================================
+     Design tokens (from Figma)
+     ============================================================ */
+      :root {
+        --size-16: 16px;
+        --size-20: 20px;
+        --size-24: 24px;
+        --size-28: 28px;
+        --size-32: 32px;
+        --size-36: 36px;
+        --size-40: 40px;
+        --size-44: 44px;
+        --size-48: 48px;
+        --size-52: 52px;
+
+        --color-bg: #fafafa;
+        --color-surface: #ffffff;
+        --color-border: rgb(230, 230, 230);
+        --color-text-primary: rgb(0, 0, 0);
+        --color-text-tertiary: rgb(151, 153, 155);
+        --color-icon-primary: rgb(0, 0, 0);
+        --color-frame-stroke: #1a202c;
+        --color-accent: rgb(40, 120, 220);
+
+        --radius-sm: 4px;
+        --radius-md: 8px;
+        --radius-lg: 12px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        padding: 48px 32px;
+        background: var(--color-bg);
+        font-family: "Roboto", sans-serif;
+        color: var(--color-text-primary);
+        -webkit-font-smoothing: antialiased;
+      }
+
+      .demo-wrap {
+        max-width: 1100px;
+        margin: 0 auto;
+      }
+
+      .demo-title {
+        font-size: 20px;
+        font-weight: 700;
+        margin: 0 0 4px 0;
+      }
+      .demo-caption {
+        color: var(--color-text-tertiary);
+        font-size: 13px;
+        margin: 0 0 36px 0;
+      }
+      .demo-caption code {
+        font-family: "JetBrains Mono", monospace;
+        background: rgba(0, 0, 0, 0.04);
+        padding: 1px 6px;
+        border-radius: 3px;
+        font-size: 12px;
+      }
+
+      .section-label {
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--color-text-tertiary);
+        margin: 36px 0 14px 0;
+      }
+
+      /* ============================================================
+     IconNext component
+     ============================================================ */
+      .icon-next {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        color: var(--color-icon-primary);
+        flex-shrink: 0;
+      }
+      .icon-next > svg {
+        display: block;
+        width: 100%;
+        height: 100%;
+      }
+
+      .icon-next[data-size="16"] {
+        width: var(--size-16);
+        height: var(--size-16);
+      }
+      .icon-next[data-size="20"] {
+        width: var(--size-20);
+        height: var(--size-20);
+      }
+      .icon-next[data-size="24"] {
+        width: var(--size-24);
+        height: var(--size-24);
+      }
+      .icon-next[data-size="28"] {
+        width: var(--size-28);
+        height: var(--size-28);
+      }
+      .icon-next[data-size="32"] {
+        width: var(--size-32);
+        height: var(--size-32);
+      }
+      .icon-next[data-size="36"] {
+        width: var(--size-36);
+        height: var(--size-36);
+      }
+      .icon-next[data-size="40"] {
+        width: var(--size-40);
+        height: var(--size-40);
+      }
+      .icon-next[data-size="44"] {
+        width: var(--size-44);
+        height: var(--size-44);
+      }
+      .icon-next[data-size="48"] {
+        width: var(--size-48);
+        height: var(--size-48);
+      }
+      .icon-next[data-size="52"] {
+        width: var(--size-52);
+        height: var(--size-52);
+      }
+
+      /* ============================================================
+     Sizes row
+     ============================================================ */
+      .sizes-row {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        flex-wrap: wrap;
+        padding: 32px 24px;
+        background: var(--color-surface);
+        border: 1px solid var(--color-border);
+        border-radius: var(--radius-md);
+      }
+
+      .size-cell {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+      }
+      .size-cell__frame {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border: 1.5px dashed var(--color-frame-stroke);
+        border-radius: var(--radius-sm);
+        padding: 2px;
+      }
+      .size-cell__label {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 11px;
+        font-weight: 500;
+        color: var(--color-text-tertiary);
+        letter-spacing: 0.02em;
+      }
+
+      /* ============================================================
+     Icon slot row
+     ============================================================ */
+      .slot-row {
+        display: flex;
+        align-items: center;
+        gap: 32px;
+        flex-wrap: wrap;
+        padding: 32px 24px;
+        background: var(--color-surface);
+        border: 1px solid var(--color-border);
+        border-radius: var(--radius-md);
+      }
+      .slot-cell {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+      }
+      .slot-cell__name {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 11px;
+        color: var(--color-text-tertiary);
+      }
+
+      /* ============================================================
+     Reference table
+     ============================================================ */
+      .size-table {
+        width: 100%;
+        border-collapse: collapse;
+        background: var(--color-surface);
+        border: 1px solid var(--color-border);
+        border-radius: var(--radius-md);
+        overflow: hidden;
+        font-size: 13px;
+      }
+      .size-table th,
+      .size-table td {
+        text-align: left;
+        padding: 10px 16px;
+        border-bottom: 1px solid var(--color-border);
+        font-weight: 400;
+      }
+      .size-table th {
+        font-weight: 700;
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        color: var(--color-text-tertiary);
+        background: rgba(0, 0, 0, 0.02);
+      }
+      .size-table tr:last-child td {
+        border-bottom: none;
+      }
+      .size-table td:first-child {
+        font-family: "JetBrains Mono", monospace;
+        font-weight: 500;
+      }
+      .size-table td.token {
+        color: var(--color-text-tertiary);
+        font-family: "JetBrains Mono", monospace;
+        font-size: 12px;
+      }
+
+      /* ============================================================
+     Interactive playground
+     ============================================================ */
+      .playground {
+        background: var(--color-surface);
+        border: 1px solid var(--color-border);
+        border-radius: var(--radius-md);
+        padding: 32px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 32px;
+      }
+      @media (max-width: 720px) {
+        .playground {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .playground__stage {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 200px;
+        background:
+          linear-gradient(
+            45deg,
+            rgba(0, 0, 0, 0.025) 25%,
+            transparent 25%,
+            transparent 75%,
+            rgba(0, 0, 0, 0.025) 75%
+          ),
+          linear-gradient(
+            45deg,
+            rgba(0, 0, 0, 0.025) 25%,
+            transparent 25%,
+            transparent 75%,
+            rgba(0, 0, 0, 0.025) 75%
+          );
+        background-size: 16px 16px;
+        background-position:
+          0 0,
+          8px 8px;
+        border-radius: var(--radius-sm);
+      }
+      .playground__stage .icon-next {
+        transition:
+          width 200ms ease,
+          height 200ms ease;
+      }
+
+      .playground__controls {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+      }
+
+      .control-label {
+        display: block;
+        font-size: 11px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        color: var(--color-text-tertiary);
+        margin-bottom: 8px;
+      }
+
+      .size-buttons {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+      }
+      .size-btn {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 12px;
+        font-weight: 500;
+        padding: 6px 10px;
+        background: transparent;
+        border: 1px solid var(--color-border);
+        border-radius: 6px;
+        cursor: pointer;
+        color: var(--color-text-primary);
+        transition:
+          background 120ms ease,
+          border-color 120ms ease,
+          color 120ms ease;
+      }
+      .size-btn:hover {
+        background: rgba(0, 0, 0, 0.04);
+      }
+      .size-btn[aria-pressed="true"] {
+        background: var(--color-text-primary);
+        color: var(--color-surface);
+        border-color: var(--color-text-primary);
+      }
+      .size-btn:focus-visible {
+        outline: 2px solid var(--color-accent);
+        outline-offset: 2px;
+      }
+
+      .icon-buttons {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+      }
+      .icon-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 36px;
+        height: 36px;
+        background: transparent;
+        border: 1px solid var(--color-border);
+        border-radius: 6px;
+        cursor: pointer;
+        color: var(--color-text-primary);
+        transition:
+          background 120ms ease,
+          border-color 120ms ease;
+      }
+      .icon-btn:hover {
+        background: rgba(0, 0, 0, 0.04);
+      }
+      .icon-btn[aria-pressed="true"] {
+        border-color: var(--color-text-primary);
+        background: rgba(0, 0, 0, 0.04);
+      }
+      .icon-btn:focus-visible {
+        outline: 2px solid var(--color-accent);
+        outline-offset: 2px;
+      }
+      .icon-btn svg {
+        width: 18px;
+        height: 18px;
+        display: block;
+      }
+
+      .readout {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 12px;
+        color: var(--color-text-tertiary);
+        line-height: 18px;
+        padding: 12px 14px;
+        background: rgba(0, 0, 0, 0.03);
+        border-radius: 6px;
+        white-space: pre;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="demo-wrap">
+      <h1 class="demo-title">Icon — UI Kit component</h1>
+      <p class="demo-caption">
+        Node <code>9209:959</code> · Sizing primitive that wraps an icon at one
+        of 10 fixed pixel sizes.
+      </p>
+
+      <div class="section-label">Sizes — all 10 variants</div>
+      <div class="sizes-row" id="sizes-row"></div>
+
+      <div class="section-label">Icon slot — same size, different content</div>
+      <div class="slot-row" id="slot-row"></div>
+
+      <div class="section-label">Reference table</div>
+      <table class="size-table">
+        <thead>
+          <tr>
+            <th>Variant</th>
+            <th>Dimensions</th>
+            <th>Token</th>
+          </tr>
+        </thead>
+        <tbody id="size-table-body"></tbody>
+      </table>
+
+      <div class="section-label">Playground — pick a size and an icon</div>
+      <div class="playground">
+        <div class="playground__stage" id="stage"></div>
+        <div class="playground__controls">
+          <div>
+            <label class="control-label">Size</label>
+            <div
+              class="size-buttons"
+              id="size-buttons"
+              role="radiogroup"
+              aria-label="Size"
+            ></div>
+          </div>
+          <div>
+            <label class="control-label">Icon</label>
+            <div
+              class="icon-buttons"
+              id="icon-buttons"
+              role="radiogroup"
+              aria-label="Icon"
+            ></div>
+          </div>
+          <div class="readout" id="readout"></div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const ICONS = {
+        bookmark: `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M6 4.5C6 3.67 6.67 3 7.5 3h9c.83 0 1.5.67 1.5 1.5V21l-6-3.5L6 21V4.5Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>`,
+        check: `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"/><path d="m8.5 12.5 2.5 2.5L16 9.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+        star: `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="m12 3 2.81 5.7 6.29.91-4.55 4.43 1.07 6.26L12 17.34l-5.62 2.96 1.07-6.26L2.9 9.61l6.29-.91L12 3Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>`,
+        heart: `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12 20s-7-4.35-7-10a4 4 0 0 1 7-2.65A4 4 0 0 1 19 10c0 5.65-7 10-7 10Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>`,
+        settings: `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.5"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.6 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33h.01a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82v.01a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>`,
+        download: `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12 4v11m0 0 4-4m-4 4-4-4M5 19h14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+      };
+
+      const SIZES = [16, 20, 24, 28, 32, 36, 40, 44, 48, 52];
+
+      function createIconNext({ size = 16, icon = "bookmark" } = {}) {
+        const el = document.createElement("div");
+        el.className = "icon-next";
+        el.dataset.size = String(size);
+        el.dataset.icon = icon;
+        el.innerHTML = ICONS[icon] || ICONS.bookmark;
+        return el;
+      }
+
+      (function renderSizesRow() {
+        const row = document.getElementById("sizes-row");
+        SIZES.forEach((size) => {
+          const cell = document.createElement("div");
+          cell.className = "size-cell";
+          const frame = document.createElement("div");
+          frame.className = "size-cell__frame";
+          frame.appendChild(createIconNext({ size, icon: "check" }));
+          const label = document.createElement("span");
+          label.className = "size-cell__label";
+          label.textContent = `${size}px`;
+          cell.appendChild(frame);
+          cell.appendChild(label);
+          row.appendChild(cell);
+        });
+      })();
+
+      (function renderSlotRow() {
+        const row = document.getElementById("slot-row");
+        Object.keys(ICONS).forEach((name) => {
+          const cell = document.createElement("div");
+          cell.className = "slot-cell";
+          cell.appendChild(createIconNext({ size: 32, icon: name }));
+          const label = document.createElement("span");
+          label.className = "slot-cell__name";
+          label.textContent = name;
+          cell.appendChild(label);
+          row.appendChild(cell);
+        });
+      })();
+
+      (function renderTable() {
+        const body = document.getElementById("size-table-body");
+        SIZES.forEach((size) => {
+          const tr = document.createElement("tr");
+          tr.innerHTML = `<td>size=${size}</td><td>${size} × ${size} px</td><td class="token">--size-${size}</td>`;
+          body.appendChild(tr);
+        });
+      })();
+
+      (function renderPlayground() {
+        const stage = document.getElementById("stage");
+        const sizeButtons = document.getElementById("size-buttons");
+        const iconButtons = document.getElementById("icon-buttons");
+        const readout = document.getElementById("readout");
+        const state = { size: 32, icon: "bookmark" };
+
+        function render() {
+          stage.innerHTML = "";
+          stage.appendChild(
+            createIconNext({ size: state.size, icon: state.icon }),
+          );
+          sizeButtons
+            .querySelectorAll(".size-btn")
+            .forEach((btn) =>
+              btn.setAttribute(
+                "aria-pressed",
+                String(Number(btn.dataset.size) === state.size),
+              ),
+            );
+          iconButtons
+            .querySelectorAll(".icon-btn")
+            .forEach((btn) =>
+              btn.setAttribute(
+                "aria-pressed",
+                String(btn.dataset.icon === state.icon),
+              ),
+            );
+          readout.textContent = `<div class="icon-next" data-size="${state.size}">
+  <svg viewBox="0 0 24 24">...</svg>
+</div>
+
+Computed: ${state.size}px × ${state.size}px
+Icon:     ${state.icon}`;
+        }
+
+        SIZES.forEach((size) => {
+          const btn = document.createElement("button");
+          btn.type = "button";
+          btn.className = "size-btn";
+          btn.textContent = String(size);
+          btn.dataset.size = String(size);
+          btn.setAttribute("role", "radio");
+          btn.setAttribute("aria-pressed", "false");
+          btn.setAttribute("aria-label", `Size ${size} pixels`);
+          sizeButtons.appendChild(btn);
+        });
+
+        Object.keys(ICONS).forEach((name) => {
+          const btn = document.createElement("button");
+          btn.type = "button";
+          btn.className = "icon-btn";
+          btn.dataset.icon = name;
+          btn.setAttribute("role", "radio");
+          btn.setAttribute("aria-pressed", "false");
+          btn.setAttribute("aria-label", name);
+          btn.innerHTML = ICONS[name];
+          iconButtons.appendChild(btn);
+        });
+
+        sizeButtons.addEventListener("click", (e) => {
+          const btn = e.target.closest(".size-btn");
+          if (btn) {
+            state.size = Number(btn.dataset.size);
+            render();
+          }
+        });
+        iconButtons.addEventListener("click", (e) => {
+          const btn = e.target.closest(".icon-btn");
+          if (btn) {
+            state.icon = btn.dataset.icon;
+            render();
+          }
+        });
+
+        function bindArrowKeys(group, sel) {
+          group.addEventListener("keydown", (e) => {
+            if (
+              !["ArrowRight", "ArrowLeft", "ArrowUp", "ArrowDown"].includes(
+                e.key,
+              )
+            )
+              return;
+            const btns = Array.from(group.querySelectorAll(sel));
+            const idx = btns.indexOf(document.activeElement);
+            if (idx === -1) return;
+            e.preventDefault();
+            const dir =
+              e.key === "ArrowRight" || e.key === "ArrowDown" ? 1 : -1;
+            btns[(idx + dir + btns.length) % btns.length].focus();
+            btns[(idx + dir + btns.length) % btns.length].click();
+          });
+        }
+        bindArrowKeys(sizeButtons, ".size-btn");
+        bindArrowKeys(iconButtons, ".icon-btn");
+        render();
+      })();
+    </script>
+  </body>
+</html>
