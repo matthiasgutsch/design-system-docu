@@ -16,19 +16,14 @@ A single tab within a Tab Bar. Represents one view or document the user can swit
 
 Try all variants and states interactively.
 
-<TabItemPlayground />
-
-## States
-
-<TabItemStateGrid />
-
----
-
-## Anatomy
-
-<TabItemAnatomy />
-
----
+<iframe
+  id="tab-item-demo"
+  src="/examples/tab-item.html"
+  title="Tab Item interactive demo"
+  style="width:100%;border:1px solid #e2e8f0;border-radius:8px;background:#fff;display:block;"
+  loading="lazy"
+  onload="this.style.height=this.contentDocument.body.scrollHeight+'px'"
+></iframe>
 
 ## Properties
 
@@ -53,32 +48,43 @@ Four official variants. Optional slots (Swatch, Icon, Close) collapse automatica
 
 Simple navigation tab. No color identity or category. Use for fixed views.
 
-<div style="font-family:sans-serif;margin:12px 0 20px;">
-  <TabItemPreview variant="label-only" label="Overview" state="active" />
+<div style="display:flex;align-items:stretch;background:#fff;border:1px solid rgb(230,230,230);border-radius:4px;overflow:hidden;font-family:'Roboto',sans-serif;margin:12px 0 20px;">
+  <button type="button" style="display:flex;align-items:center;height:48px;padding:0 16px;background:transparent;border:none;border-bottom:4px solid #000;cursor:pointer;font-weight:700;font-size:13px;color:#000;">Overview</button>
 </div>
 
 ### 2 · Swatch + Label
 
 Color dot paired with a label. Use when the tab represents a job or document with a unique color identity.
 
-<div style="font-family:sans-serif;margin:12px 0 20px;">
-  <TabItemPreview variant="swatch-label" label="Job A - Fabric inspection" state="active" />
+<div style="display:flex;align-items:stretch;background:#fff;border:1px solid rgb(230,230,230);border-radius:4px;overflow:hidden;font-family:'Roboto',sans-serif;margin:12px 0 20px;">
+  <button type="button" style="display:flex;align-items:center;gap:8px;height:48px;padding:0 16px;background:transparent;border:none;border-bottom:4px solid #000;cursor:pointer;font-weight:700;font-size:13px;color:#000;">
+    <span style="width:16px;height:16px;border-radius:4px;background:rgb(215,25,47);flex-shrink:0;display:inline-block;"></span>
+    <span>Job A - Fabric inspection</span>
+  </button>
 </div>
 
 ### 3 · Swatch + Label + Close _(most common)_
 
 Closeable job or document tab. The most frequently used variant in the product.
 
-<div style="font-family:sans-serif;margin:12px 0 20px;">
-  <TabItemPreview variant="swatch-label-close" label="Job A - Fabric inspection" state="active" />
+<div style="display:flex;align-items:stretch;background:#fff;border:1px solid rgb(230,230,230);border-radius:4px;overflow:hidden;font-family:'Roboto',sans-serif;margin:12px 0 20px;">
+  <button type="button" style="display:flex;align-items:center;gap:8px;height:48px;padding:0 16px;background:transparent;border:none;border-bottom:4px solid #000;cursor:pointer;font-weight:700;font-size:13px;color:#000;">
+    <span style="width:16px;height:16px;border-radius:4px;background:rgb(215,25,47);flex-shrink:0;display:inline-block;"></span>
+    <span>Job A - Fabric inspection</span>
+    <span style="width:20px;height:20px;display:inline-flex;align-items:center;justify-content:center;border-radius:4px;"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1.5 1.5L10.5 10.5M10.5 1.5L1.5 10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+  </button>
 </div>
 
 ### 4 · Icon + Label + Close
 
 Categorized, closeable tab. Use when the content type has semantic meaning (info, warning, error) that an icon can communicate.
 
-<div style="font-family:sans-serif;margin:12px 0 20px;">
-  <TabItemPreview variant="icon-label-close" label="Calibration report" state="active" />
+<div style="display:flex;align-items:stretch;background:#fff;border:1px solid rgb(230,230,230);border-radius:4px;overflow:hidden;font-family:'Roboto',sans-serif;margin:12px 0 20px;">
+  <button type="button" style="display:flex;align-items:center;gap:8px;height:48px;padding:0 16px;background:transparent;border:none;border-bottom:4px solid transparent;cursor:pointer;font-weight:700;font-size:13px;color:rgb(151,153,155);">
+    <span style="width:14px;height:14px;display:inline-flex;align-items:center;justify-content:center;color:#000;"><svg viewBox="0 0 14 14" fill="none" width="14" height="14"><circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.25"/><path d="M7 6.25V10" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"/><circle cx="7" cy="4.25" r="0.75" fill="currentColor"/></svg></span>
+    <span>Calibration report</span>
+    <span style="width:20px;height:20px;display:inline-flex;align-items:center;justify-content:center;border-radius:4px;"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1.5 1.5L10.5 10.5M10.5 1.5L1.5 10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+  </button>
 </div>
 
 ---
@@ -89,25 +95,33 @@ Categorized, closeable tab. Use when the content type has semantic meaning (info
 
 Base state. Label uses `color/text/tertiary`. No background, no border indicator.
 
-<TabItemPreview framed state="default" />
+<div style="display:inline-flex;align-items:stretch;background:#fff;border:1px solid rgb(230,230,230);border-radius:4px;overflow:hidden;font-family:'Roboto',sans-serif;margin:8px 0 16px;">
+  <button type="button" style="display:flex;align-items:center;height:48px;padding:0 16px;background:transparent;border:none;border-bottom:4px solid transparent;cursor:pointer;font-weight:700;font-size:13px;color:rgb(151,153,155);">Tab label</button>
+</div>
 
 ### Hover
 
 Triggered on pointer over. Background becomes `rgba(0,0,0,0.04)`. Label color stays tertiary.
 
-<TabItemPreview framed state="hover" />
+<div style="display:inline-flex;align-items:stretch;background:#fff;border:1px solid rgb(230,230,230);border-radius:4px;overflow:hidden;font-family:'Roboto',sans-serif;margin:8px 0 16px;">
+  <button type="button" style="display:flex;align-items:center;height:48px;padding:0 16px;background:rgba(0,0,0,0.04);border:none;border-bottom:4px solid transparent;cursor:pointer;font-weight:700;font-size:13px;color:rgb(151,153,155);">Tab label</button>
+</div>
 
 ### Active
 
 Currently selected tab. Label switches to `color/text/primary`. A 4px bottom border in `color/black/100` marks the active position. **Only one tab can be Active at a time.**
 
-<TabItemPreview framed state="active" />
+<div style="display:inline-flex;align-items:stretch;background:#fff;border:1px solid rgb(230,230,230);border-radius:4px;overflow:hidden;font-family:'Roboto',sans-serif;margin:8px 0 16px;">
+  <button type="button" style="display:flex;align-items:center;height:48px;padding:0 16px;background:transparent;border:none;border-bottom:4px solid #000;cursor:pointer;font-weight:700;font-size:13px;color:#000;">Tab label</button>
+</div>
 
 ### Disabled
 
 Not interactive. The entire tab item is rendered at 40% opacity. Cannot be clicked or focused.
 
-<TabItemPreview framed state="disabled" />
+<div style="display:inline-flex;align-items:stretch;background:#fff;border:1px solid rgb(230,230,230);border-radius:4px;overflow:hidden;font-family:'Roboto',sans-serif;margin:8px 0 16px;">
+  <button type="button" style="display:flex;align-items:center;height:48px;padding:0 16px;background:transparent;border:none;border-bottom:4px solid transparent;cursor:default;font-weight:700;font-size:13px;color:rgb(151,153,155);opacity:0.4;pointer-events:none;">Tab label</button>
+</div>
 
 ### State summary
 

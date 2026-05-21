@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Tab Item — UI Kit</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  /* ---------- Design tokens (from Figma component spec) ---------- */
+  :root {
+    --color-brand-200: rgb(215, 25, 47);
+    --color-border-default: rgb(230, 230, 230);
+    --color-text-primary: rgb(0, 0, 0);
+    --color-text-tertiary: rgb(151, 153, 155);
+    --color-black-100: rgb(0, 0, 0);
+    --color-icon-primary: rgb(0, 0, 0);
+    --color-hover-bg: rgba(0, 0, 0, 0.04);
+
+    --spacing-2: 8px;
+    --spacing-4: 16px;
+    --spacing-12: 48px;
+
+    --radius-md: 8px;
+    --radius-sm: 4px;
+
+    --tab-max-width: 320px;
+    --active-border: 4px;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    padding: 48px 32px;
+    background: #fafafa;
+    font-family: 'Roboto', sans-serif;
+    color: var(--color-text-primary);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .demo-wrap {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .demo-title {
+    font-size: 20px;
+    font-weight: 700;
+    margin: 0 0 8px 0;
+  }
+
+  .demo-sub {
+    color: var(--color-text-tertiary);
+    font-size: 13px;
+    margin: 0 0 32px 0;
+  }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-text-tertiary);
+    margin: 32px 0 12px 0;
+  }
+
+  /* ---------- Tab Bar container ---------- */
+  .tab-bar {
+    display: flex;
+    align-items: stretch;
+    background: #fff;
+    border-bottom: 1px solid var(--color-border-default);
+    overflow-x: auto;
+    scrollbar-width: thin;
+  }
+
+  /* ---------- Tab Item — base ---------- */
+  .tab-item {
+    /* layout */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: var(--spacing-12);          /* 48px fixed */
+    padding: 0 var(--spacing-4);        /* 16px x */
+    max-width: var(--tab-max-width);    /* 320px max */
+    /* visual */
+    background: transparent;
+    border: none;
+    border-bottom: var(--active-border) solid transparent; /* reserve 4px always */
+    cursor: pointer;
+    /* typography */
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    line-height: 21px;
+    color: var(--color-text-tertiary);
+    /* motion */
+    transition: background-color 120ms ease, border-color 120ms ease, color 120ms ease;
+    /* a11y reset */
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .tab-item:focus-visible {
+    outline: 2px solid var(--color-brand-200);
+    outline-offset: -2px;
+  }
+
+  /* ---------- Tab Item — content slots ---------- */
+  .tab-item__content {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-2);  /* 8px gap */
+    overflow: hidden;
+    min-width: 0;
+  }
+
+  .tab-item__label {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    min-width: 0;
+  }
+
+  .tab-item__swatch {
+    flex-shrink: 0;
+    width: 16px;
+    height: 16px;
+    border-radius: var(--radius-sm);
+    background: var(--color-brand-200); /* default swatch color */
+  }
+
+  .tab-item__icon {
+    flex-shrink: 0;
+    width: 14px;
+    height: 14px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-icon-primary);
+  }
+  .tab-item__icon svg {
+    width: 14px;
+    height: 14px;
+    display: block;
+  }
+
+  .tab-item__close {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+    background: transparent;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    color: var(--color-icon-primary);
+    transition: background-color 120ms ease;
+  }
+  .tab-item__close svg {
+    width: 12px;
+    height: 12px;
+    display: block;
+  }
+  .tab-item__close:hover {
+    background: rgba(0, 0, 0, 0.08);
+  }
+  .tab-item__close:focus-visible {
+    outline: 2px solid var(--color-brand-200);
+    outline-offset: -2px;
+  }
+
+  /* ---------- States ---------- */
+
+  /* Hover — 4% black bg */
+  .tab-item:not([data-state="active"]):not([data-state="disabled"]):hover {
+    background: var(--color-hover-bg);
+  }
+
+  /* Active — 4px black bottom border, primary label color */
+  .tab-item[data-state="active"] {
+    border-bottom-color: var(--color-black-100);
+    color: var(--color-text-primary);
+  }
+
+  /* Disabled — opacity .4 (spec says 0.4) and not interactive */
+  .tab-item[data-state="disabled"] {
+    opacity: 0.4;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
+  /* ---------- Demo grids ---------- */
+  .state-row {
+    display: flex;
+    align-items: stretch;
+    background: #fff;
+    border: 1px solid var(--color-border-default);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .live-demo {
+    background: #fff;
+    border: 1px solid var(--color-border-default);
+    border-radius: 4px;
+  }
+
+  .live-demo__body {
+    padding: 32px;
+    color: var(--color-text-tertiary);
+    font-size: 14px;
+    line-height: 22px;
+  }
+  .live-demo__body strong {
+    color: var(--color-text-primary);
+  }
+
+  .add-tab {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 24px;
+    padding: 10px 14px;
+    background: var(--color-text-primary);
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: opacity 120ms ease;
+  }
+  .add-tab:hover { opacity: 0.85; }
+</style>
+</head>
+<body>
+
+<div class="demo-wrap">
+
+  <h1 class="demo-title">Tab Item — UI Kit component</h1>
+  <p class="demo-sub">Faithful implementation of node <code>9204:4371</code>. Vanilla JS &amp; CSS only.</p>
+
+  <!-- =================== ALL STATES =================== -->
+  <div class="section-label">States — all 4 variants side by side</div>
+  <div class="state-row" id="states-demo">
+    <button class="tab-item" type="button" data-state="default">
+      <span class="tab-item__content">
+        <span class="tab-item__label">Default</span>
+      </span>
+    </button>
+
+    <!-- Forced hover via data-state for showcase -->
+    <button class="tab-item" type="button" data-state="default" style="background: var(--color-hover-bg);">
+      <span class="tab-item__content">
+        <span class="tab-item__label">Hover</span>
+      </span>
+    </button>
+
+    <button class="tab-item" type="button" data-state="active">
+      <span class="tab-item__content">
+        <span class="tab-item__label">Active</span>
+      </span>
+    </button>
+
+    <button class="tab-item" type="button" data-state="disabled" aria-disabled="true">
+      <span class="tab-item__content">
+        <span class="tab-item__label">Disabled</span>
+      </span>
+    </button>
+  </div>
+
+  <!-- =================== CONTENT VARIANTS =================== -->
+  <div class="section-label">Content variants — the 4 official combinations</div>
+  <div class="state-row">
+    <!-- 1. Label only -->
+    <button class="tab-item" type="button" data-state="default">
+      <span class="tab-item__content">
+        <span class="tab-item__label">Label only</span>
+      </span>
+    </button>
+
+    <!-- 2. Swatch + Label -->
+    <button class="tab-item" type="button" data-state="default">
+      <span class="tab-item__content">
+        <span class="tab-item__swatch" style="background: rgb(40, 120, 220);"></span>
+        <span class="tab-item__label">Swatch + Label</span>
+      </span>
+    </button>
+
+    <!-- 3. Swatch + Label + Close -->
+    <button class="tab-item" type="button" data-state="active">
+      <span class="tab-item__content">
+        <span class="tab-item__swatch" style="background: rgb(215, 25, 47);"></span>
+        <span class="tab-item__label">Swatch + Label + Close</span>
+        <span class="tab-item__close" role="button" tabindex="0" aria-label="Close">
+          <svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M1.5 1.5L10.5 10.5M10.5 1.5L1.5 10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </span>
+      </span>
+    </button>
+
+    <!-- 4. Icon + Label + Close -->
+    <button class="tab-item" type="button" data-state="default">
+      <span class="tab-item__content">
+        <span class="tab-item__icon">
+          <!-- Outline info icon, 14x14 -->
+          <svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.25"/>
+            <path d="M7 6.25V10" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"/>
+            <circle cx="7" cy="4.25" r="0.75" fill="currentColor"/>
+          </svg>
+        </span>
+        <span class="tab-item__label">Icon + Label + Close</span>
+        <span class="tab-item__close" role="button" tabindex="0" aria-label="Close">
+          <svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M1.5 1.5L10.5 10.5M10.5 1.5L1.5 10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </span>
+      </span>
+    </button>
+  </div>
+
+  <!-- =================== LIVE INTERACTIVE TAB BAR =================== -->
+  <div class="section-label">Interactive — click to activate, × to close</div>
+  <div class="live-demo">
+    <div class="tab-bar" id="live-tabs" role="tablist"></div>
+    <div class="live-demo__body" id="live-panel">
+      Select a tab above. Tabs can be closed with the <strong>×</strong> button (except pinned ones). Try a very long label to see truncation at 320px.
+    </div>
+  </div>
+
+  <button class="add-tab" id="add-tab-btn" type="button">
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+      <path d="M7 2.5V11.5M2.5 7H11.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    </svg>
+    Add tab
+  </button>
+
+</div>
+
+<script>
+  /* ============================================================
+     Tab Item component — vanilla JS factory
+     ============================================================ */
+
+  // Icons (outline, 14x14 for content icons, 12x12 for close)
+  const ICONS = {
+    close: `<svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M1.5 1.5L10.5 10.5M10.5 1.5L1.5 10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    </svg>`,
+    info: `<svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.25"/>
+      <path d="M7 6.25V10" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"/>
+      <circle cx="7" cy="4.25" r="0.75" fill="currentColor"/>
+    </svg>`,
+    warning: `<svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M7 1.5L13 12H1L7 1.5Z" stroke="currentColor" stroke-width="1.25" stroke-linejoin="round"/>
+      <path d="M7 5.5V8.5" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"/>
+      <circle cx="7" cy="10.5" r="0.6" fill="currentColor"/>
+    </svg>`
+  };
+
+  /**
+   * Create a tab DOM element from a config object.
+   * @param {Object} cfg
+   * @param {string} cfg.id        — unique id
+   * @param {string} cfg.label
+   * @param {'default'|'active'|'disabled'} [cfg.state]
+   * @param {string} [cfg.swatch]  — RGB swatch color (mutually exclusive with icon)
+   * @param {'info'|'warning'} [cfg.icon] — icon key (mutually exclusive with swatch)
+   * @param {boolean} [cfg.closable]
+   * @param {boolean} [cfg.pinned] — disables close
+   */
+  function createTab(cfg) {
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'tab-item';
+    btn.dataset.state = cfg.state || 'default';
+    btn.dataset.id = cfg.id;
+    btn.setAttribute('role', 'tab');
+    btn.setAttribute('aria-selected', cfg.state === 'active' ? 'true' : 'false');
+    if (cfg.state === 'disabled') {
+      btn.setAttribute('aria-disabled', 'true');
+    }
+
+    const content = document.createElement('span');
+    content.className = 'tab-item__content';
+
+    // Swatch and Icon are mutually exclusive — enforce per Figma spec
+    if (cfg.swatch && cfg.icon) {
+      console.warn(`Tab "${cfg.label}": swatch and icon are mutually exclusive — icon ignored.`);
+    }
+
+    if (cfg.swatch) {
+      const swatch = document.createElement('span');
+      swatch.className = 'tab-item__swatch';
+      swatch.style.background = cfg.swatch;
+      content.appendChild(swatch);
+    } else if (cfg.icon && ICONS[cfg.icon]) {
+      const iconWrap = document.createElement('span');
+      iconWrap.className = 'tab-item__icon';
+      iconWrap.innerHTML = ICONS[cfg.icon];
+      content.appendChild(iconWrap);
+    }
+
+    const label = document.createElement('span');
+    label.className = 'tab-item__label';
+    label.textContent = cfg.label;
+    content.appendChild(label);
+
+    if (cfg.closable && !cfg.pinned) {
+      const close = document.createElement('span');
+      close.className = 'tab-item__close';
+      close.setAttribute('role', 'button');
+      close.setAttribute('tabindex', '0');
+      close.setAttribute('aria-label', `Close ${cfg.label}`);
+      close.innerHTML = ICONS.close;
+      content.appendChild(close);
+    }
+
+    btn.appendChild(content);
+    return btn;
+  }
+
+  /* ============================================================
+     Interactive tab bar logic
+     ============================================================ */
+  const tabBar = document.getElementById('live-tabs');
+  const panel = document.getElementById('live-panel');
+  const addBtn = document.getElementById('add-tab-btn');
+
+  let tabs = [
+    { id: 't1', label: 'Overview',              state: 'active',   closable: false, pinned: true },
+    { id: 't2', label: 'Job #2847 — Crimson',   state: 'default',  swatch: 'rgb(215, 25, 47)',  closable: true },
+    { id: 't3', label: 'Job #2848 — Ocean',     state: 'default',  swatch: 'rgb(40, 120, 220)', closable: true },
+    { id: 't4', label: 'Warnings',              state: 'default',  icon: 'warning',             closable: true },
+    { id: 't5', label: 'Info — disabled tab',   state: 'disabled', icon: 'info',                closable: true },
+    { id: 't6', label: 'Very long tab label that will be truncated past three hundred and twenty pixels wide',
+                                                state: 'default',  closable: true },
+  ];
+
+  let nextId = 7;
+
+  function render() {
+    tabBar.innerHTML = '';
+    tabs.forEach(t => tabBar.appendChild(createTab(t)));
+    const active = tabs.find(t => t.state === 'active');
+    panel.innerHTML = active
+      ? `Active tab: <strong>${active.label}</strong>`
+      : 'No active tab.';
+  }
+
+  function activate(id) {
+    const target = tabs.find(t => t.id === id);
+    if (!target || target.state === 'disabled') return;
+    tabs.forEach(t => {
+      if (t.state !== 'disabled') t.state = (t.id === id) ? 'active' : 'default';
+    });
+    render();
+  }
+
+  function closeTab(id) {
+    const idx = tabs.findIndex(t => t.id === id);
+    if (idx === -1) return;
+    const wasActive = tabs[idx].state === 'active';
+    tabs.splice(idx, 1);
+    // If the closed tab was active, activate the previous (or next) non-disabled tab
+    if (wasActive) {
+      const fallback = tabs[idx - 1] || tabs[idx] || tabs.find(t => t.state !== 'disabled');
+      if (fallback && fallback.state !== 'disabled') {
+        fallback.state = 'active';
+      }
+    }
+    render();
+  }
+
+  // Event delegation — single listener for the whole bar
+  tabBar.addEventListener('click', (e) => {
+    const closeEl = e.target.closest('.tab-item__close');
+    const tabEl = e.target.closest('.tab-item');
+    if (!tabEl) return;
+    const id = tabEl.dataset.id;
+    if (closeEl) {
+      e.stopPropagation();
+      closeTab(id);
+    } else {
+      activate(id);
+    }
+  });
+
+  // Keyboard support: Enter/Space on close, Arrow keys to move between tabs
+  tabBar.addEventListener('keydown', (e) => {
+    const closeEl = e.target.closest('.tab-item__close');
+    if (closeEl && (e.key === 'Enter' || e.key === ' ')) {
+      e.preventDefault();
+      const tabEl = closeEl.closest('.tab-item');
+      closeTab(tabEl.dataset.id);
+      return;
+    }
+
+    if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+      const focusable = Array.from(tabBar.querySelectorAll('.tab-item:not([data-state="disabled"])'));
+      const currentIdx = focusable.indexOf(document.activeElement);
+      if (currentIdx === -1) return;
+      e.preventDefault();
+      const dir = e.key === 'ArrowRight' ? 1 : -1;
+      const next = focusable[(currentIdx + dir + focusable.length) % focusable.length];
+      next.focus();
+    }
+  });
+
+  addBtn.addEventListener('click', () => {
+    const palette = ['rgb(34, 139, 87)', 'rgb(243, 156, 18)', 'rgb(155, 89, 182)', 'rgb(52, 152, 219)'];
+    tabs.push({
+      id: 't' + nextId,
+      label: `Job #${2848 + nextId} — New`,
+      state: 'default',
+      swatch: palette[nextId % palette.length],
+      closable: true
+    });
+    nextId++;
+    render();
+  });
+
+  render();
+</script>
+</body>
+</html>
