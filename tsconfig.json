@@ -6,7 +6,7 @@
     "strict": true,
     "jsx": "preserve",
     "lib": ["ESNext", "DOM"],
-    "types": ["node"],
+    "types": ["node", "vitepress/client"],
     "skipLibCheck": true
   },
   "include": [
