@@ -20,7 +20,7 @@ Try all variants and states interactively.
 
 <iframe
   id="tab-item-demo"
-  src="/examples/tab-item.html"
+  src="/v1.0.0/examples/tab-item.html"
   title="Tab Item interactive demo"
   style="width:100%;border:1px solid #e2e8f0;border-radius:8px;background:#fff;display:block;"
   loading="lazy"
