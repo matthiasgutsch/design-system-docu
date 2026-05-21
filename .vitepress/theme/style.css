@@ -84,3 +84,114 @@
     gap: 6px;
   }
 }
+
+/* =========================================================
+   Tab Item — component styles (shared with examples/tab-item.html)
+   ========================================================= */
+
+.tab-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+  padding: 0 16px;
+  max-width: 320px;
+  background: transparent;
+  border: none;
+  border-bottom: 4px solid transparent;
+  cursor: pointer;
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  line-height: 21px;
+  color: rgb(151, 153, 155);
+  white-space: nowrap;
+  flex-shrink: 0;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.tab-item__content {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  overflow: hidden;
+  min-width: 0;
+}
+
+.tab-item__label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-width: 0;
+}
+
+.tab-item__swatch {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+}
+
+.tab-item__icon {
+  flex-shrink: 0;
+  width: 14px;
+  height: 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: rgb(0, 0, 0);
+}
+.tab-item__icon svg {
+  width: 14px;
+  height: 14px;
+  display: block;
+}
+
+.tab-item__close {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  border-radius: 4px;
+  color: rgb(0, 0, 0);
+}
+.tab-item__close svg {
+  width: 12px;
+  height: 12px;
+  display: block;
+}
+
+.tab-item[data-state="hover"] {
+  background: rgba(0, 0, 0, 0.04);
+}
+.tab-item[data-state="active"] {
+  border-bottom-color: rgb(0, 0, 0);
+  color: rgb(0, 0, 0);
+}
+.tab-item[data-state="disabled"] {
+  opacity: 0.4;
+  pointer-events: none;
+  cursor: not-allowed;
+}
+
+/* Wrapper used in documentation previews */
+.doc-tab-preview {
+  display: flex;
+  align-items: stretch;
+  background: #fff;
+  border: 1px solid rgb(230, 230, 230);
+  border-radius: 4px;
+  overflow: hidden;
+  margin: 12px 0 20px;
+  color-scheme: light;
+}
+
+.doc-tab-preview--inline {
+  display: inline-flex;
+  margin: 8px 0 16px;
+}
